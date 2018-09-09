@@ -18,7 +18,53 @@
 
 <h1>Built Environment 1</h1>
 
-<p>paragraph text here<br><br>
+<p><meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.js'></script>
+    <script src='./female3000.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; right:0; bottom:0; width:20%;height:60% }
+    </style>
+     <div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoic3RldmVuam15IiwiYSI6ImNqbG0xZzdhczEzcDEza281ajV6YXR2djMifQ.lsTXrW6arMzrjZhRHsgfnA';
+var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/mapbox/light-v9', // stylesheet location
+    center: [151.004105, -33.813002], // starting position [lng, lat]
+    pitch: 45,
+bearing: -17.6,
+    zoom: 9 // starting zoom
+});
+map.on('load', function() {
+map.addLayer({
+"id": "data",
+"type": "fill-extrusion",
+"source": {
+'type': 'geojson',
+'data': data
+},
+'paint': {
+'fill-extrusion-color' : {
+'property': 'femalet',
+"stops":[
+[0, 'pale turquoise'],
+[400, 'royal blue']
+]
+},
+'fill-extrusion-height' : {
+'property': 'female3000',
+"stops":[
+[0, 10],
+[64, 7000]
+]
+},
+'fill-extrusion-opacity': 1
+}
+});
+});
+</script><br><br>
 this is updated
 </p>
 
